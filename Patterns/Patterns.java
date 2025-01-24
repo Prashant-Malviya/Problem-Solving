@@ -207,6 +207,28 @@ public class Patterns {
         }
     }
     
+    // Pattern 12
+
+// ********
+// ***  ***
+// **    **
+// *      *
+static void pattern12(int rows) {
+    
+    int cols = 2*rows;
+
+    for(int i=0;i<rows;i++){
+        for(int j=0;j<cols;j++){
+            if(j < rows-i || j >= rows + i){
+                System.out.print("*");
+            }else{
+                System.out.print(" ");
+            }
+        }
+        System.out.println();
+    }
+}
+
     
 
     public static void main(String[] args) {
@@ -230,6 +252,7 @@ public class Patterns {
         // pattern8(rows);
         // pattern9(rows);
         // pattern10(rows);
-        pattern11(rows);
+        // pattern11(rows);
+        pattern12(rows);
     }
 }
