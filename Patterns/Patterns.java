@@ -229,6 +229,36 @@ static void pattern12(int rows) {
     }
 }
 
+static void pattern13(int rows){
+    
+    int cols = 2*rows-1;
+
+    int mid = (cols/2) + 1;
+    
+    int k;
+
+    for(int i=1;i<=rows;i++){
+
+        k = 0;
+
+        for(int j=1;j<=cols;j++){
+
+            if(j >= (mid-i+1) && j <= (mid+i-1)){
+                
+                if(j <= mid)
+                k++;
+                else k--;  
+                System.out.print(k);
+
+                
+            }else{
+                System.out.print(" ");
+            }
+        }
+        System.out.println();
+    }
+}
+
     
 
     public static void main(String[] args) {
@@ -253,6 +283,7 @@ static void pattern12(int rows) {
         // pattern9(rows);
         // pattern10(rows);
         // pattern11(rows);
-        pattern12(rows);
+        // pattern12(rows);
+        pattern13(rows);
     }
 }
