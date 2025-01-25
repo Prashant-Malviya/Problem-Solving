@@ -179,21 +179,22 @@ public class Patterns {
         }
     }
 
-    /* pattern11
-
-               *
-              ***
-             *****
-            *******   
+    /*
+     * pattern11
+     *
+     ***
+     *****
+     ******* 
+     * 
      */
 
-     static void pattern11(int rows) {
+    static void pattern11(int rows) {
         // Dynamically calculate the total columns needed for symmetry
         int cols = 2 * rows - 1; // Total columns will be based on rows
-    
+
         // Middle column for symmetry
         int mid = (cols / 2) + 1;
-    
+
         for (int i = 1; i <= rows; i++) {
             for (int j = 1; j <= cols; j++) {
                 // Check if the current column lies within the star range for this row
@@ -206,60 +207,125 @@ public class Patterns {
             System.out.println();
         }
     }
-    
+
     // Pattern 12
 
-// ********
-// ***  ***
-// **    **
-// *      *
-static void pattern12(int rows) {
-    
-    int cols = 2*rows;
+    // ********
+    // *** ***
+    // ** **
+    // * *
+    static void pattern12(int rows) {
 
-    for(int i=0;i<rows;i++){
-        for(int j=0;j<cols;j++){
-            if(j < rows-i || j >= rows + i){
-                System.out.print("*");
-            }else{
-                System.out.print(" ");
+        int cols = 2 * rows;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (j < rows - i || j >= rows + i) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
             }
+            System.out.println();
         }
-        System.out.println();
     }
-}
 
-static void pattern13(int rows){
-    
-    int cols = 2*rows-1;
+    // Pattern14
+    // 1
+    // 121
+    // 12321
+    // 1234321
+    // 123454321
 
-    int mid = (cols/2) + 1;
-    
-    int k;
+    static void pattern13(int rows) {
 
-    for(int i=1;i<=rows;i++){
+        int cols = 2 * rows - 1;
 
-        k = 0;
+        int mid = (cols / 2) + 1;
 
-        for(int j=1;j<=cols;j++){
+        int k;
 
-            if(j >= (mid-i+1) && j <= (mid+i-1)){
-                
-                if(j <= mid)
-                k++;
-                else k--;  
-                System.out.print(k);
+        for (int i = 1; i <= rows; i++) {
 
-                
-            }else{
-                System.out.print(" ");
+            k = 0;
+
+            for (int j = 1; j <= cols; j++) {
+
+                if (j >= (mid - i + 1) && j <= (mid + i - 1)) {
+
+                    if (j <= mid)
+                        k++;
+                    else
+                        k--;
+                    System.out.print(k);
+
+                } else {
+                    System.out.print(" ");
+                }
             }
+            System.out.println();
         }
-        System.out.println();
     }
-}
 
-    
+    /*
+     * ABCDCBA
+     * ABC CBA
+     * AB BA
+     * A A
+     */
+
+    static void pattern14(int rows) {
+        int cols = 2 * rows - 1; // Number of columns for the pyramid
+
+        for (int i = 0; i < rows; i++) {
+            char c = 'A';
+
+            for (int j = 0; j < cols; j++) {
+                // Print characters for the first and last half
+                if (j <= rows - i - 1 || j >= rows + i - 1) {
+                    System.out.print(c);
+                    if (j < rows - 1) {
+                        c++; // Increment character
+                    } else {
+                        c--; // Decrement character
+                    }
+                } else {
+                    System.out.print(" ");
+                }
+            }
+
+            System.out.println();
+        }
+    }
+
+    static void pattern15(int rows) {
+        int k = 0;
+        int n = (rows + 1) / 2;
+
+        for (int i = 1; i <= rows; i++) {
+
+            if (rows % 2 == 0) {
+                if (i <= n)
+                    k++;
+                if(i>n+1) k--;
+            } else {
+                if (i <= n)
+                    k++;
+                else
+                    k--;
+            }
+
+            for (int j = 1; j <= rows; j++) {
+
+                if ((j >= n + 1 - k) && (j <= n - 1 + k)) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
 
     public static void main(String[] args) {
 
@@ -284,6 +350,8 @@ static void pattern13(int rows){
         // pattern10(rows);
         // pattern11(rows);
         // pattern12(rows);
-        pattern13(rows);
+        // pattern13(rows);
+        // pattern14(rows);
+        pattern15(rows);
     }
 }
