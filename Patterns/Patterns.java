@@ -298,6 +298,13 @@ public class Patterns {
         }
     }
 
+    //pattern16
+//      *  
+//     *** 
+//    *****
+//     *** 
+//      * 
+
     static void pattern15(int rows) {
         int k = 0;
         int n = (rows + 1) / 2;
@@ -322,6 +329,54 @@ public class Patterns {
                 } else {
                     System.out.print(" ");
                 }
+            }
+            System.out.println();
+        }
+    }
+
+    /* pattern16
+        *
+        **
+        ***
+        ****
+        *****
+        ****
+        ***
+        **
+        *
+*/
+    static void pattern16(int rows){
+        int k = 0;
+        int mid =(rows/2)+1;
+
+        for(int i=1;i<=rows;i++){
+            if(rows%2 == 0){
+                if(i<=mid-1) k++;
+                if(i>mid) k--;
+            }else{
+                if(i <= mid) k++;
+                else k--;
+            }
+            for(int j=1;j<=mid;j++){
+
+                if(j<=k) System.out.print("*");
+                else System.out.print(" ");
+ 
+            }
+            System.out.println();
+        }
+    }
+
+    static void pattern17(int rows){
+
+        int cols = 2*rows - 1;
+
+        for(int i=1;i<=rows;i++){
+
+            for(int j=1;j<=cols;j++){
+                if(j>=i && j<= cols+1-i)
+                    System.out.print("*");
+                else System.out.print(" ");
             }
             System.out.println();
         }
@@ -352,6 +407,8 @@ public class Patterns {
         // pattern12(rows);
         // pattern13(rows);
         // pattern14(rows);
-        pattern15(rows);
+        // pattern15(rows);
+        // pattern16(rows);
+        pattern17(rows);
     }
 }
