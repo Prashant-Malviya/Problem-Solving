@@ -186,6 +186,7 @@ public class Patterns {
      *****
      ******* 
      * 
+     * 
      */
 
     static void pattern11(int rows) {
@@ -298,12 +299,12 @@ public class Patterns {
         }
     }
 
-    //pattern16
-//      *  
-//     *** 
-//    *****
-//     *** 
-//      * 
+    // pattern16
+    // *
+    // ***
+    // *****
+    // ***
+    // *
 
     static void pattern15(int rows) {
         int k = 0;
@@ -314,7 +315,8 @@ public class Patterns {
             if (rows % 2 == 0) {
                 if (i <= n)
                     k++;
-                if(i>n+1) k--;
+                if (i > n + 1)
+                    k--;
             } else {
                 if (i <= n)
                     k++;
@@ -334,49 +336,104 @@ public class Patterns {
         }
     }
 
-    /* pattern16
-        *
-        **
-        ***
-        ****
-        *****
-        ****
-        ***
-        **
-        *
-*/
-    static void pattern16(int rows){
+    /*
+     * pattern16
+     *
+     **
+     ***
+     ****
+     *****
+     ****
+     ***
+     **
+     *
+     */
+    static void pattern16(int rows) {
         int k = 0;
-        int mid =(rows/2)+1;
+        int mid = (rows / 2) + 1;
 
-        for(int i=1;i<=rows;i++){
-            if(rows%2 == 0){
-                if(i<=mid-1) k++;
-                if(i>mid) k--;
-            }else{
-                if(i <= mid) k++;
-                else k--;
+        for (int i = 1; i <= rows; i++) {
+            if (rows % 2 == 0) {
+                if (i <= mid - 1)
+                    k++;
+                if (i > mid)
+                    k--;
+            } else {
+                if (i <= mid)
+                    k++;
+                else
+                    k--;
             }
-            for(int j=1;j<=mid;j++){
+            for (int j = 1; j <= mid; j++) {
 
-                if(j<=k) System.out.print("*");
-                else System.out.print(" ");
- 
+                if (j <= k)
+                    System.out.print("*");
+                else
+                    System.out.print(" ");
+
             }
             System.out.println();
         }
     }
 
-    static void pattern17(int rows){
+    /*
+     * pattern17
+     *********
+     ******* 
+     ***** 
+     *** 
+     * 
+     */
+    static void pattern17(int rows) {
 
-        int cols = 2*rows - 1;
+        int cols = 2 * rows - 1;
 
-        for(int i=1;i<=rows;i++){
+        for (int i = 1; i <= rows; i++) {
 
-            for(int j=1;j<=cols;j++){
-                if(j>=i && j<= cols+1-i)
+            for (int j = 1; j <= cols; j++) {
+                if (j >= i && j <= cols + 1 - i)
                     System.out.print("*");
-                else System.out.print(" ");
+                else
+                    System.out.print(" ");
+            }
+            System.out.println();
+        }
+    }
+
+    /*
+     * pattern18
+     * 
+     * 1
+     * 232
+     * 34543
+     * 4567654
+     * 567898765
+     */
+
+    static void pattern18(int rows) {
+
+        int cols = 2 * rows - 1;
+
+        int mid = (cols / 2) + 1;
+
+        int k = 1;
+
+        for (int i = 1; i <= rows; i++) {
+            k = i;
+            for (int j = 1; j <= cols; j++) {
+
+                if (j >= (mid - i + 1) && j <= (mid + i - 1)) {
+
+                    System.out.print(k);
+
+                    if (j < mid)
+                        k++;
+                    else
+                        k--;
+
+                } else {
+                    System.out.print(" ");
+                }
             }
             System.out.println();
         }
@@ -409,6 +466,7 @@ public class Patterns {
         // pattern14(rows);
         // pattern15(rows);
         // pattern16(rows);
-        pattern17(rows);
+        // pattern17(rows);
+        pattern18(rows);
     }
 }
