@@ -146,26 +146,144 @@ public class Arrays {
         System.out.println("the distinct elements are "+count);
     }
 
-    public static void main(String[] args) {
-        
+    // print prime numbers between range
+
+    static void printPrimeNumbers(){
+
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter the size of the array: ");
-        int size = sc.nextInt();
+        System.out.println("enter the range of number");
 
-        System.out.println("Enter Arr Elements: ");
+        int range = sc.nextInt();
 
-        int[] arr = new int[size];
+        System.out.print("Prime Numbers Are: ");
+        
+        for(int i=1;i<=range;i++){
+            int count = 0;
 
-        for(int i=0;i<size;i++){
-            arr[i] = sc.nextInt();
+            for(int j=1;j<=i;j++){
+
+                if(i%j == 0){
+                    count++;
+                }
+            }
+
+            if(count == 2){
+                System.out.print(i+" ");
+            }
+        }
+    }
+
+
+    // Reverse numbers sum between range
+
+    static int reverseNumber(int number){
+
+        int reverse = 0;
+
+        while(number > 0){
+            int remainder = number % 10;
+
+            reverse = reverse*10+remainder;
+
+            number /= 10;
         }
 
-        System.out.println("Here is the array elements: ");
+        return reverse;
+    }
 
-        for(int e: arr){
-            System.out.println(e);
+    static void reverseNumbersSum(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the range for which you want to find the reverse sum: ");
+
+        int num1 = sc.nextInt();
+
+        int num2 = sc.nextInt();
+
+        int sum = 0;
+
+        for(int i=num1;i<=num2;i++){
+            int number = i;
+            int reverseNumber = reverseNumber(number);
+
+            sum += reverseNumber;
         }
+
+        System.out.println("The sum of reverse numbers is : "+sum);
+
+    }
+
+    // First and last index of a target element
+
+    static int[] firstAndLastIdx(int[] arr,int target){
+        int firstIdx = 0, lastIdx  = 0;
+
+        for(int i=0;i<arr.length;i++){
+            if(arr[i] == target){
+                firstIdx = i;
+                break;
+            }
+        }
+
+        for(int j=arr.length-1;j>=0;j--){
+            if(arr[j] == target){
+                lastIdx = j;
+                break;
+            }
+        }
+
+        return new int[]{firstIdx,lastIdx};
+    }
+
+
+    // Count frequency of each element
+
+    static void frequencyCounter(int[] arr){
+
+        boolean[] visited = new boolean[arr.length];
+
+        
+
+        for(int i=0;i<arr.length;i++){
+
+            if(visited[i] == false){
+                visited[i] = true;
+                int count = 1;
+
+                for(int j=i+1;j<arr.length;j++){
+                    if(arr[i] == arr[j]){
+                        visited[j] = true;
+                        count++;
+                    }
+                }
+                
+                System.out.println(arr[i]+" -> "+count);
+            }
+        }
+
+    }
+
+    public static void main(String[] args) {
+        
+        // Scanner sc = new Scanner(System.in);
+
+        // System.out.println("Enter the size of the array: ");
+        // int size = sc.nextInt();
+
+        // System.out.println("Enter Arr Elements: ");
+
+        // int[] arr = new int[size];
+
+        // for(int i=0;i<size;i++){
+        //     arr[i] = sc.nextInt();
+        // }
+
+        // System.out.println("Here is the array elements: ");
+
+        // for(int e: arr){
+        //     System.out.println(e);
+        // }
 
         // sumAndMultiplication(arr);
 
@@ -181,7 +299,17 @@ public class Arrays {
 
         // oddAndEvenTripletSumCount(arr);
 
-        distinctElementCount(arr);
+        // distinctElementCount(arr);
+
+        // printPrimeNumbers();
+
+        // reverseNumbersSum();
+
+        // int[] result = firstAndLastIdx(new int[]{1,3,2,2,2,0}, 2);
+
+        // System.out.println("the first and last idx is "+result[0]+" "+result[1]);
+
+        frequencyCounter(new int[]{1,2,3,2,1,2,1,3,53,2,1,2,2,3,4});
     }
     
 }
