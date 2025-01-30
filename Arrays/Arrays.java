@@ -271,6 +271,86 @@ public class Arrays {
         }
     }
 
+    //Left_diognal and right diagonal with repeating and without repeating
+
+    static void leftAndRightDiagonalSum(int[][]matrix){
+        int leftDiagonalSum = 0, rightDiagonalSum = 0;
+
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+
+                if(i==j){
+                    leftDiagonalSum += matrix[i][j];
+                }
+                if(i+j == rows-1){
+                    rightDiagonalSum += matrix[i][j];
+                }
+
+                //to print boundary elements
+
+                if((i==0 || i==rows-1) && (j==0 || j==cols-1) ){
+                    System.out.print(matrix[i][j]+" ");
+                }
+
+            }
+            System.out.println();
+        }
+
+        System.out.println("The left diagonal sum is : "+ leftDiagonalSum);
+
+        System.out.println("The right diagonal sum is : "+rightDiagonalSum);
+
+        int sumOfBothDiagonals = leftDiagonalSum+rightDiagonalSum;
+
+        System.out.println("The sum of left diagonal and right diagonal is : "+ sumOfBothDiagonals);
+
+        int diffOfLeftAndRightDiagonal = 0;
+
+        if(leftDiagonalSum > rightDiagonalSum){
+            diffOfLeftAndRightDiagonal = leftDiagonalSum - rightDiagonalSum;
+        }else{
+            diffOfLeftAndRightDiagonal = rightDiagonalSum - leftDiagonalSum;
+        }
+
+        System.out.println("The difference of left and right diagonal sum is : "+ diffOfLeftAndRightDiagonal);
+
+
+    }
+
+    //  To Print the elements in z form && Transpose of a matrix
+
+    static void zFormElements(int[][] matrix) {
+
+        int rows = matrix.length, cols = matrix[0].length;
+
+        int[][] matrix2 = new int[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+            
+                // z-form 
+                 if((i == 0 && j <cols) || (i == rows/2 && j==cols/2) || (i==rows-1 && j<cols)){
+                    System.out.print(matrix[i][j]);
+                }
+
+                // transpose 
+                matrix2[i][j] = matrix[j][i];
+            }
+            System.out.println();
+        }
+
+        //tranpose matrix
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                System.out.print(matrix2[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
 
         // Scanner sc = new Scanner(System.in);
@@ -318,7 +398,11 @@ public class Arrays {
 
         // frequencyCounter(new int[] { 1, 2, 3, 2, 1, 2, 1, 3, 53, 2, 1, 2, 2, 3, 4 });
 
-        twoDArray(new int[][]{{1,2,3,4},{5,6,7,8},{9,8,7,6}});
+        // twoDArray(new int[][]{{1,2,3,4},{5,6,7,8},{9,8,7,6}});
+
+        // leftAndRightDiagonalSum(new int[][]{{1,2,3},{4,5,6},{7,8,9}});
+
+        zFormElements(new int[][]{{1,2,3},{2,3,4},{5,6,7}});
     }
 
 }
