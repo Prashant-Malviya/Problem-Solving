@@ -3,7 +3,7 @@ import java.util.*;
 class Hashing{
 
 
-    static int[] countFrequency(int[] arr,int n){
+    static int[] countFrequencyBruteForce(int[] arr,int n){
 
         Scanner sc = new Scanner(System.in);
 
@@ -38,7 +38,35 @@ class Hashing{
         return queriesAnswerArr;
     }
 
-    static void countFrequencyUsingHashMap(int[]arr, int n){
+import java.util.HashSet;
+
+class FrequencyCounter {
+    static void countFrequencyUsingHashArr(int[] arr, int n) {
+        int[] hashArr = new int[50];
+
+        // Build frequency array
+        for (int i = 0; i < n; i++) {
+            hashArr[arr[i]]++;
+        }
+
+        // Print frequency of unique elements only
+        HashSet<Integer> printed = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            if (!printed.contains(arr[i])) { 
+                System.out.println(arr[i] + " -> " + hashArr[arr[i]]);
+                printed.add(arr[i]);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 2, 1, 1, 4};
+        countFrequencyUsingHashArr(arr, arr.length);
+    }
+}
+
+
+    static void countFrequencyUsingHashMapOptimise(int[]arr, int n){
 
         HashMap<Integer,Integer> map = new HashMap<>();
 
@@ -74,7 +102,10 @@ class Hashing{
         // }
 
 
-        countFrequencyUsingHashMap(arr,sizeOfArray);
+        // countFrequencyUsingHashMap(arr,sizeOfArray);
+
+
+        countFrequencyUsingHashArr(arr,sizeOfArray);
 
     }
 }
